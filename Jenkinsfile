@@ -22,7 +22,9 @@ pipeline{
         }
         stage('Unit Test'){
             steps{
-                sh 'mvn test'
+		agent label{win_slave}
+		git 'https://github.com/madala0611/DevOpsClassCodes.git'
+                bat 'mvn test'
             }
 	    post{
                success {
